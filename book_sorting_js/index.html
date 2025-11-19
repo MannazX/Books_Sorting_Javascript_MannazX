@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Books Sorting Methods</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" />
+    <!-- TODO: Import Vue.js core library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.js"></script>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+
+<body>
+    <div id="app">
+        <!-- Insert Vue intro header here -->
+         <h1>{{ pageTitle }}</h1>
+         <input placeholder="title" type="text" v-model="title" v-on:keyup.enter="filterByTitle">
+         <button v-on:click="filterByTitle" class="btn btn-primary">
+            Filter By Title
+         </button>
+         <input placeholder="filterByPrice" type="text" v-model="price" v-on:keyup.enter="filterByPrice">
+         <button v-on:click="filterByPrice" class="btn btn-primary">
+            Filter By Price
+         </button>
+
+         <table v-if="selectBookList.length > 0" class="table table-striped">
+            <thead>
+                <th>Sort By Id
+                    <button v-on:click="sortByIdAsc">Asc</button>
+                    <button v-on:click="sortByIdDesc">Desc</button>
+                </th>
+                <th><button v-on:click="sortByTitle">Sort By Title</button></th>
+                <th>Sort By Price
+                    <button v-on.click="sortByPriceAsc">Asc</button>
+                    <button v-on.click="sortByPriceDesc">Desc</button>
+                </th>
+            </thead>
+            <tbody>
+                <tr v-for="book in selectBookList">
+                    <td>{{ book.id }}</td>
+                    <td>{{ book.title }}</td>
+                    <td>{{ book.price }}</td>
+                </tr>
+            </tbody>
+         </table>
+    </div>
+    <script src="./js/main.js"></script>
+</body>
+
+
+</html>
